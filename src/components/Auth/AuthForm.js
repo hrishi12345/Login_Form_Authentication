@@ -23,10 +23,10 @@ const AuthForm = () => {
     setisLoading(true)
     let url
     if(isLogin){
-          url='https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCR1tfldY3tGoHgIHRJFEULd1C5XYv8kKQ'
+          url='{YOUR_URL}'
           
     }else{
-      url='https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCR1tfldY3tGoHgIHRJFEULd1C5XYv8kKQ'
+     url='{YOUR_URL}'
     }
       fetch(url,{
         method:'POST',
