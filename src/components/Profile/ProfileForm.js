@@ -1,10 +1,12 @@
 import { useContext, useRef } from 'react';
 import classes from './ProfileForm.module.css';
 import { AuthContext } from '../Auth/Auth_context';
+import {useNavigate} from 'react-router-dom'
 
 
 const ProfileForm = () => {
   const pass=useRef()
+  const navigate=useNavigate()
   const tok=useContext(AuthContext)
   const submitHandler=(event)=>{
     event.preventDefault()
@@ -15,6 +17,8 @@ const ProfileForm = () => {
         idToken:tok.token,
         password:newPass,
         returnSecureToken:true
+      }).then((res)=>{
+             navigate('/')
       })
     })
   }

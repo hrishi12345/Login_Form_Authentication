@@ -3,9 +3,11 @@ import { useState ,useRef ,useContext} from 'react';
 import classes from './AuthForm.module.css';
 // import { json } from 'react-router-dom';
 import { AuthContext } from './Auth_context';
+import { useNavigate } from "react-router-dom";
 
 const AuthForm = () => {
   const enteredemail=useRef()
+  const navigate=useNavigate()
   const eneredPass=useRef()
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading,setisLoading]=useState(false)
@@ -54,6 +56,7 @@ const AuthForm = () => {
         }
       }).then((data)=>{
         contextAtx.login(data.idToken)
+        navigate('/')
       }).catch((err)=>
         alert(err)
       )
