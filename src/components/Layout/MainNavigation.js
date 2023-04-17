@@ -1,8 +1,19 @@
 import { Link } from 'react-router-dom';
 
 import classes from './MainNavigation.module.css';
+import { useContext } from 'react';
+import { AuthContext } from '../Auth/Auth_context';
+// import { Redirect } from 'react-router-dom';
 
 const MainNavigation = () => {
+  const authCon=useContext(AuthContext)
+  const isLog=authCon.isLoggin
+  const logoutHandler=()=>{
+    authCon.logout()
+    // return(
+    // <Redirect to='/' >
+      
+  }
   return (
     <header className={classes.header}>
       <Link to='/'>
@@ -10,15 +21,16 @@ const MainNavigation = () => {
       </Link>
       <nav>
         <ul>
-          <li>
+          {!isLog && <li>
             <Link to='/auth'>Login</Link>
-          </li>
-          <li>
+          </li>}
+          {isLog && <li>
             <Link to='/profile'>Profile</Link>
-          </li>
-          <li>
-            <button>Logout</button>
-          </li>
+          </li>}
+          {isLog && <li>
+            <button onClick={logoutHandler}>Logout</button>
+          </li>}
+          
         </ul>
       </nav>
     </header>

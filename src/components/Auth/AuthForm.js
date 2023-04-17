@@ -1,13 +1,15 @@
-import { useState ,useRef } from 'react';
+import { useState ,useRef ,useContext} from 'react';
 
 import classes from './AuthForm.module.css';
-import { json } from 'react-router-dom';
+// import { json } from 'react-router-dom';
+import { AuthContext } from './Auth_context';
 
 const AuthForm = () => {
   const enteredemail=useRef()
   const eneredPass=useRef()
   const [isLogin, setIsLogin] = useState(true);
   const [isLoading,setisLoading]=useState(false)
+  const contextAtx=useContext(AuthContext)
 
   const switchAuthModeHandler = () => {
     setIsLogin((prevState) => !prevState);
@@ -51,7 +53,7 @@ const AuthForm = () => {
           })
         }
       }).then((data)=>{
-        console.log(data)
+        contextAtx.login(data.idToken)
       }).catch((err)=>
         alert(err)
       )
