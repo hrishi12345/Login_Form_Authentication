@@ -12,10 +12,13 @@ function AuthContextProvider(props){
     const userisLoggin=!!token
     const loginHandler=(token)=>{
         localStorage.setItem('token',token)
+        
         setToken(token)
+        setTimeout(logoutHandler,50000)
     
     }
     const logoutHandler=()=>{
+        
         localStorage.removeItem('token')
         setToken(null)
     }

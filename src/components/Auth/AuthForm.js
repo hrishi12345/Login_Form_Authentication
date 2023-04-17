@@ -34,6 +34,7 @@ const AuthForm = () => {
           email:enteremail
           , password:enterpass,
           returnSecureToken:true
+
         }),
         headers:{
           'Content-Type':'application/json'
